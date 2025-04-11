@@ -11,9 +11,9 @@ import { optimizedSearch } from "../applications/hotel/rag-search";
 
 const hotelsRouter = express.Router();
 
-hotelsRouter.route("/").get(isAuthenticated, getAllHotels).post(isAuthenticated, isAdmin, createHotel);
-hotelsRouter.route("/:id").get(getHotelById).put(updateHotel).delete(deleteHotel);
-hotelsRouter.route("/index-hotels").post(indexHotels);
+hotelsRouter.route("/").get(getAllHotels).post(isAuthenticated, isAdmin, createHotel);
+hotelsRouter.route("/:id").get(getHotelById).put(isAuthenticated, isAdmin, updateHotel).delete(isAuthenticated, isAdmin, deleteHotel);
+hotelsRouter.route("/index-hotels").post(indexHotels); // create a method to a automatically index when a hotel is creared
 hotelsRouter.route("/search").post(optimizedSearch);
 
 export default hotelsRouter;
