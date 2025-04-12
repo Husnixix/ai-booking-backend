@@ -12,7 +12,7 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors());
+app.use(cors({ origin: "https://aidf-le-luxe-frontend-husni.netlify.app" }));
 app.use(express.json());
 app.use(clerkMiddleware());
 
